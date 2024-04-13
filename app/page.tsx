@@ -19,6 +19,9 @@ export default function Home() {
         value={sentence}
         onChange={handleChange}
       />
+      <div className="w-[900px] h-[120px] text-[40px] bg-green-300 px-[30px] overflow-auto flex items-center rounded-lg">
+        {sentence}
+      </div>
     </div>
   );
 }
