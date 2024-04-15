@@ -7,7 +7,9 @@ interface Response {
 }
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+  const { searchParams }: { searchParams: URLSearchParams } = new URL(
+    request.url
+  );
 
   const symbols: string[] = elements.map((element) => element.symbol);
   const res: Response = breakSentenceToElements(searchParams.get('sentence'), [
