@@ -40,7 +40,7 @@ export default function Home() {
       />
       <div className="w-[900px] h-[120px] text-[40px] bg-green-300 px-[30px] overflow-auto flex items-center rounded-lg whitespace-pre">
         {response.isBreakable &&
-          response.resultArray.map((symbol, i) => <div className={clsx('font-bold',{
+          response.resultArray.map((symbol, i) => <div key={i} className={clsx('font-bold',{
             'text-red-500': i % 3 === 0,
             'text-green-500': i % 3 === 1,
             'text-blue-500': i % 3 === 2,
