@@ -28,12 +28,12 @@ export default function Home() {
   function sendSentence(sentence: string) {}
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-green-400 flex flex-col justify-center items-center gap-[80px]">
-      <div className="w-full text-[90px] text-center font-bold text-white">
+    <div className='fixed left-0 top-0 flex h-full w-full flex-col items-center justify-center gap-[80px] bg-green-400'>
+      <div className='w-full text-center text-[90px] font-bold text-white'>
         Periodic Table Speller
       </div>
       <input
-        className="w-[900px] h-[120px] text-[40px] shadow-2xl focus:outline-none px-[30px] rounded-lg"
+        className='h-[120px] w-[900px] rounded-lg px-[30px] text-[40px] shadow-2xl focus:outline-none'
         value={sentence}
         onChange={handleChange}
         onKeyUp={handleKeyUp}
