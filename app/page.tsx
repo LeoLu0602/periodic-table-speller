@@ -38,13 +38,20 @@ export default function Home() {
         onChange={handleChange}
         onKeyUp={handleKeyUp}
       />
-      <div className="w-[900px] h-[120px] text-[40px] bg-green-300 px-[30px] overflow-auto flex items-center rounded-lg whitespace-pre">
+      <div className='flex h-[120px] w-[900px] items-center overflow-auto whitespace-pre rounded-lg bg-green-300 px-[30px] text-[40px]'>
         {response.isBreakable &&
-          response.resultArray.map((symbol, i) => <div key={i} className={clsx('font-bold',{
-            'text-red-500': i % 3 === 0,
-            'text-green-500': i % 3 === 1,
-            'text-blue-500': i % 3 === 2,
-          })}>{symbol}</div>)}
+          response.resultArray.map((symbol, i) => (
+            <div
+              key={i}
+              className={clsx('font-bold', {
+                'text-red-500': i % 3 === 0,
+                'text-green-500': i % 3 === 1,
+                'text-blue-500': i % 3 === 2,
+              })}
+            >
+              {symbol}
+            </div>
+          ))}
       </div>
     </div>
   );
