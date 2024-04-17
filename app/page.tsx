@@ -101,6 +101,7 @@ export default function Home() {
         onChange={handleChange}
         onKeyUp={handleKeyUp}
         disabled={isSending}
+        autoFocus={true}
       />
       <div
         className={clsx(
