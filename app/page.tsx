@@ -28,17 +28,17 @@ export default function Home() {
   function sendSentence(sentence: string) {}
 
   return (
-    <div className='fixed left-0 top-0 flex h-full w-full flex-col items-center justify-center gap-[80px] bg-green-400'>
-      <div className='w-full text-center text-[90px] font-bold text-white'>
+    <>
+      <div className='h-auto w-11/12 text-center text-6xl font-bold text-white'>
         Periodic Table Speller
       </div>
       <input
-        className='h-[120px] w-[900px] rounded-lg px-[30px] text-[40px] shadow-2xl focus:outline-none'
+        className='h-16 w-3/5 rounded-lg p-4 text-2xl focus:outline-none max-[480px]:w-[320px]'
         value={sentence}
         onChange={handleChange}
         onKeyUp={handleKeyUp}
       />
-      <div className='flex h-[120px] w-[900px] items-center overflow-auto whitespace-pre rounded-lg bg-green-300 px-[30px] text-[40px]'>
+      <div className='flex h-16 w-3/5 items-center overflow-auto whitespace-pre rounded-lg bg-green-300 px-[30px] text-2xl max-[480px]:w-[320px]'>
         {response.isBreakable &&
           response.resultArray.map((symbol, i) => (
             <div
@@ -53,6 +53,6 @@ export default function Home() {
             </div>
           ))}
       </div>
-    </div>
+    </>
   );
 }
