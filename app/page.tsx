@@ -8,8 +8,14 @@ interface Response {
   resultArray: string[];
 }
 
+interface displayedSymbol {
+  symbol: string;
+  color: string;
+}
+
 export default function Home() {
   const [sentence, setSentence] = useState<string>('');
+  const [isSending, setIsSending] = useState<boolean>(false);
   const [response, setResponse] = useState<Response>({
     isBreakable: true,
     resultArray: [],
@@ -19,40 +25,110 @@ export default function Home() {
     setSentence(e.target.value);
   }
 
-  function handleKeyUp(e: React.KeyboardEvent<HTMLInputElement>): void {
+  async function handleKeyUp(
+    e: React.KeyboardEvent<HTMLInputElement>
+  ): Promise<void> {
     if (e.key === 'Enter') {
-      sendSentence(sentence);
+      if (sentence.length === 0) {
+        setResponse({
+          isBreakable: true,
+          resultArray: [],
+        });
+        return;
+      }
+
+      setIsSending(true);
+
+      try {
+        setResponse(await sendSentence(sentence));
+      } catch (err) {
+        console.error('API error: ', err);
+      }
+
+      setIsSending(false);
     }
   }
 
-  function sendSentence(sentence: string) {}
+  async function sendSentence(sentence: string): Promise<Response> {
+    const apiUrl: string = `https://periodic-table-speller.vercel.app/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
+
+    try {
+      const res: globalThis.Response = await fetch(apiUrl);
+      const data: Response = await res.json();
+
+      return data;
+    } catch (err) {
+      console.error('API error: ', err);
+
+      return {
+        isBreakable: false,
+        resultArray: [],
+      };
+    }
+  }
+
+  function getDisplayedResultArray(resultArray: string[]): displayedSymbol[] {
+    let color: string = 'blue';
+
+    return resultArray.map((symbol) => {
+      if (symbol !== ' ') {
+        color = color === 'red' ? 'blue' : 'red';
+      }
+
+      return {
+        symbol,
+        color,
+      };
+    });
+  }
 
   return (
-    <>
+    <div
+      className={clsx(
+        'flex min-h-screen w-screen flex-col items-center justify-center gap-12',
+        {
+          'bg-green-400': !isSending,
+          'bg-orange-400': isSending,
+        }
+      )}
+    >
       <div className='h-auto w-11/12 text-center text-6xl font-bold text-white'>
         Periodic Table Speller
       </div>
       <input
-        className='h-16 w-3/5 rounded-lg p-4 text-2xl focus:outline-none max-[480px]:w-[320px]'
+        className='h-16 w-3/5 rounded-lg p-4 text-2xl shadow-2xl focus:outline-none max-[480px]:w-[320px]'
         value={sentence}
         onChange={handleChange}
         onKeyUp={handleKeyUp}
+        disabled={isSending}
       />
-      <div className='flex h-16 w-3/5 items-center overflow-auto whitespace-pre rounded-lg bg-green-300 px-[30px] text-2xl max-[480px]:w-[320px]'>
-        {response.isBreakable &&
-          response.resultArray.map((symbol, i) => (
-            <div
-              key={i}
-              className={clsx('font-bold', {
-                'text-red-500': i % 3 === 0,
-                'text-green-500': i % 3 === 1,
-                'text-blue-500': i % 3 === 2,
-              })}
-            >
-              {symbol}
-            </div>
-          ))}
+      <div
+        className={clsx(
+          'flex h-16 w-3/5 items-center overflow-auto whitespace-pre rounded-lg px-4 text-2xl shadow-2xl max-[480px]:w-[320px]',
+          {
+            'bg-green-300': !isSending,
+            'bg-orange-300': isSending,
+          }
+        )}
+      >
+        {response.isBreakable ? (
+          getDisplayedResultArray(response.resultArray).map(
+            ({ symbol, color }, i) => (
+              <div
+                key={i}
+                className={clsx('font-bold', {
+                  'text-red-500': color === 'red',
+                  'text-blue-500': color === 'blue',
+                })}
+              >
+                {symbol}
+              </div>
+            )
+          )
+        ) : (
+          <div className='font-bold text-red-500'>Not Breakable</div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
