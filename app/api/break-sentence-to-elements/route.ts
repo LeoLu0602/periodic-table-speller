@@ -6,7 +6,7 @@ interface Response {
   resultArray: string[];
 }
 
-export async function GET(request: Request) {
+export async function GET(request: Request): Promise<NextResponse<Response>> {
   const { searchParams }: { searchParams: URLSearchParams } = new URL(
     request.url
   );
@@ -57,6 +57,7 @@ function breakSentenceToElements(
           isBreakable: true,
           resultArray: [...dp[i - wordLength].resultArray, suffix],
         };
+
         break;
       }
     }
