@@ -2,15 +2,17 @@
 
 import { useState } from 'react';
 import clsx from 'clsx';
+import { elements } from '../public/elements';
 
 interface Response {
   isBreakable: Boolean;
   resultArray: string[];
 }
 
-interface displayedSymbol {
+interface DisplayedSymbol {
   symbol: string;
   color: string;
+  source: string | undefined;
 }
 
 export default function Home() {
@@ -34,6 +36,7 @@ export default function Home() {
           isBreakable: true,
           resultArray: [],
         });
+
         return;
       }
 
@@ -43,6 +46,7 @@ export default function Home() {
         setResponse(await sendSentence(sentence));
       } catch (err) {
         console.error('API error: ', err);
+        alert('API error');
       }
 
       setIsSending(false);
@@ -50,7 +54,8 @@ export default function Home() {
   }
 
   async function sendSentence(sentence: string): Promise<Response> {
-    const apiUrl: string = `https://periodic-table-speller.vercel.app/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
+    // const apiUrl: string = `https://periodic-table-speller.vercel.app/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
+    const apiUrl: string = `http://localhost:3000/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
 
     try {
       const res: globalThis.Response = await fetch(apiUrl);
@@ -59,6 +64,7 @@ export default function Home() {
       return data;
     } catch (err) {
       console.error('API error: ', err);
+      alert('API error');
 
       return {
         isBreakable: false,
@@ -67,18 +73,20 @@ export default function Home() {
     }
   }
 
-  function getDisplayedResultArray(resultArray: string[]): displayedSymbol[] {
+  function getDisplayedResultArray(resultArray: string[]): DisplayedSymbol[] {
     let color: string = 'blue';
 
     return resultArray.map((symbol) => {
+      const source: string | undefined = elements.find(
+        (element) => element.symbol.toLowerCase() === symbol.toLowerCase()
+      )?.source;
+      const displayedSymbol: DisplayedSymbol = { symbol, color, source };
+
       if (symbol !== ' ') {
         color = color === 'red' ? 'blue' : 'red';
       }
 
-      return {
-        symbol,
-        color,
-      };
+      return displayedSymbol;
     });
   }
 
@@ -114,16 +122,18 @@ export default function Home() {
       >
         {response.isBreakable ? (
           getDisplayedResultArray(response.resultArray).map(
-            ({ symbol, color }, i) => (
-              <div
+            ({ symbol, color, source }, i) => (
+              <a
                 key={i}
+                href={source ?? ''}
+                target='_blank'
                 className={clsx('font-bold', {
                   'text-red-500': color === 'red',
                   'text-blue-500': color === 'blue',
                 })}
               >
                 {symbol}
-              </div>
+              </a>
             )
           )
         ) : (
