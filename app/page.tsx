@@ -54,8 +54,7 @@ export default function Home() {
   }
 
   async function sendSentence(sentence: string): Promise<Response> {
-    // const apiUrl: string = `https://periodic-table-speller.vercel.app/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
-    const apiUrl: string = `http://localhost:3000/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
+    const apiUrl: string = `https://periodic-table-speller.vercel.app/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
 
     try {
       const res: globalThis.Response = await fetch(apiUrl);
