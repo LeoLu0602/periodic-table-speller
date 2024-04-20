@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { elements } from '../../../public/elements.js';
+import { elements } from '@/public/elements.js';
 
 interface Response {
   isBreakable: Boolean;
