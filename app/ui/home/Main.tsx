@@ -94,7 +94,7 @@ export default function Main() {
   return (
     <div
       className={clsx(
-        'flex h-screen w-screen flex-col items-center justify-center gap-12',
+        'flex h-screen w-screen scroll-mt-0 flex-col items-center justify-center gap-12',
         {
           'bg-green-400': !isSending,
           'bg-orange-400': isSending,
