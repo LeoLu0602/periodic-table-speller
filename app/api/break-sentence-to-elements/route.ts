@@ -24,7 +24,7 @@ function breakSentenceToElements(
   sentence: string | null,
   dictionary: string[]
 ): Response {
-  if (!sentence) {
+  if (sentence === null) {
     return {
       isBreakable: false,
       resultArray: [],
