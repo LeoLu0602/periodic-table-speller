@@ -67,15 +67,15 @@ export default function Main() {
       );
       const data: Response = await res.json();
 
-      return data;
+      return Promise.resolve(data);
     } catch (err) {
       console.error('API error: ', err);
       alert('API error');
 
-      return {
+      return Promise.resolve({
         isBreakable: true,
         resultArray: [],
-      };
+      });
     }
   }
 
