@@ -4,6 +4,11 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import { elements } from '@/public/elements';
 
+const PROD_API_URL: string =
+  'https://periodic-table-speller.vercel.app/api/break-sentence-to-elements';
+const DEV_API_URL: string =
+  'http://localhost:3000/api/break-sentence-to-elements';
+
 interface Response {
   isBreakable: Boolean;
   resultArray: string[];
@@ -54,12 +59,10 @@ export default function Main() {
   }
 
   async function sendSentence(sentence: string): Promise<Response> {
-    const productionApiUrl: string = `https://periodic-table-speller.vercel.app/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
-    const devApiUrl: string = `http://localhost:3000/api/break-sentence-to-elements?sentence=${encodeURI(sentence)}`;
-    const apiUrl: string = productionApiUrl;
-
     try {
-      const res: globalThis.Response = await fetch(apiUrl);
+      const res: globalThis.Response = await fetch(
+        `${DEV_API_URL}?sentence=${encodeURI(sentence)}`
+      );
       const data: Response = await res.json();
 
       return data;
@@ -96,8 +99,8 @@ export default function Main() {
       className={clsx(
         'flex h-screen w-screen flex-col items-center justify-center gap-12',
         {
-          'bg-green-400': !isSending,
-          'bg-orange-400': isSending,
+          'bg-green-500': !isSending,
+          'bg-orange-500': isSending,
         }
       )}
     >
