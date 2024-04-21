@@ -49,6 +49,11 @@ export default function Main() {
       } catch (err) {
         console.error('API error: ', err);
         alert('API error');
+
+        setResponse({
+          isBreakable: true,
+          resultArray: [],
+        });
       }
 
       setIsSending(false);
@@ -68,7 +73,7 @@ export default function Main() {
       alert('API error');
 
       return {
-        isBreakable: false,
+        isBreakable: true,
         resultArray: [],
       };
     }
