@@ -37,10 +37,7 @@ export default function Main() {
   ): Promise<void> {
     if (e.key === 'Enter') {
       if (sentence.length === 0) {
-        setResponse({
-          isBreakable: true,
-          resultArray: [],
-        });
+        clear();
 
         return;
       }
@@ -94,6 +91,14 @@ export default function Main() {
     });
   }
 
+  function clear(): void {
+    setSentence('');
+    setResponse({
+      isBreakable: true,
+      resultArray: [],
+    });
+  }
+
   return (
     <div
       className={clsx(
@@ -144,6 +149,12 @@ export default function Main() {
           <div className='font-bold text-red-500'>Not Breakable</div>
         )}
       </div>
+      <button
+        className='h-12 w-48 rounded-lg bg-red-500 text-2xl font-bold text-white hover:bg-red-400'
+        onClick={clear}
+      >
+        Clear
+      </button>
     </div>
   );
 }
