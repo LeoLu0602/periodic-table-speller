@@ -61,7 +61,7 @@ export default function Main() {
   async function sendSentence(sentence: string): Promise<Response> {
     try {
       const res: globalThis.Response = await fetch(
-        `${DEV_API_URL}?sentence=${encodeURI(sentence)}`
+        `${PROD_API_URL}?sentence=${encodeURI(sentence)}`
       );
       const data: Response = await res.json();
 
