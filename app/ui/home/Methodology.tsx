@@ -5,7 +5,7 @@ export default function Methodology() {
         How It Works
       </h2>
       <p className='mx-auto max-w-screen-lg p-8 text-left text-xl font-bold text-white'>
-        The algorithm behind Periodic Table Speller is inspired by
+        The algorithm behind Periodic Table Speller is inspired by&nbsp;
         <a
           href='https://leetcode.com/problems/word-break/description/'
           target='_blank'
