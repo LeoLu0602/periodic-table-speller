@@ -16,7 +16,15 @@ export default function Methodology() {
         .&nbsp;1D dynamic programming is applied to break a sentence into
         chemical elements if possible. wordDict in Word Break is set to an array
         of 118 chemical elements and a whitespace. Whitespace is included to
-        preserve sentence&apos;s format.
+        preserve sentence&apos;s format. See&nbsp;
+        <a
+          href='https://github.com/LeoLu0602/periodic-table-speller'
+          target='_blank'
+          className='text-teal-500'
+        >
+          source code
+        </a>
+        &nbsp;to learn more about this project.
       </p>
     </article>
   );

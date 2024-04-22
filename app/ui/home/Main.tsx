@@ -113,7 +113,7 @@ export default function Main() {
         }
       )}
     >
-      <h1 className='h-auto w-screen px-4 text-center text-6xl font-bold text-teal-500'>
+      <h1 className='h-auto w-screen animate-[] animate-[fadeIn_3s] px-4 text-center text-6xl font-bold text-teal-500'>
         Periodic Table Speller
       </h1>
       <input
@@ -132,10 +132,13 @@ export default function Main() {
                 key={i}
                 href={source ?? ''}
                 target='_blank'
-                className={clsx('px-px font-bold hover:text-3xl', {
-                  'text-red-500': color === 'red',
-                  'text-blue-500': color === 'blue',
-                })}
+                className={clsx(
+                  'animate-[fadeIn_0.5s] px-px font-bold hover:text-3xl',
+                  {
+                    'text-red-500': color === 'red',
+                    'text-blue-500': color === 'blue',
+                  }
+                )}
               >
                 {symbol}
               </a>
