@@ -1,6 +1,6 @@
 export default function Methodology() {
   return (
-    <article className='h-screen w-screen pt-8 text-center'>
+    <article className='h-auto w-screen pt-8 text-center'>
       <h2 className='w-screen text-center text-5xl font-bold text-teal-500'>
         How It Works
       </h2>

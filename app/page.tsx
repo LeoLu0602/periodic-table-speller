@@ -3,7 +3,7 @@ import Methodology from '@/app/ui/home/Methodology';
 
 export default function Home() {
   return (
-    <main>
+    <main className='pb-96'>
       <Main />
       <Methodology />
     </main>
