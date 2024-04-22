@@ -1,7 +1,7 @@
 export default function Methodology() {
   return (
     <article className='min-h-screen w-screen pt-8 text-center'>
-      <h2 className='w-screen text-center text-5xl font-bold text-white'>
+      <h2 className='w-screen text-center text-5xl font-bold text-teal-500'>
         How It Works
       </h2>
       <p className='mx-auto max-w-screen-lg p-8 text-left text-xl font-bold text-white'>
@@ -9,11 +9,11 @@ export default function Methodology() {
         <a
           href='https://leetcode.com/problems/word-break/description/'
           target='_blank'
-          className='text-blue-600'
+          className='text-teal-500'
         >
-          LeetCode 139. Word Break.
+          LeetCode 139. Word Break
         </a>
-        &nbsp;1D dynamic programming is applied to break a sentence into
+        .&nbsp;1D dynamic programming is applied to break a sentence into
         chemical elements if possible. wordDict in Word Break is set to an array
         of 118 chemical elements and a whitespace. Whitespace is included to
         preserve sentence&apos;s format.

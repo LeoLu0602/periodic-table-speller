@@ -109,30 +109,22 @@ export default function Main() {
       className={clsx(
         'flex h-screen w-screen flex-col items-center justify-center gap-12',
         {
-          'bg-orange-500': isSending,
+          'bg-zinc-700': isSending,
         }
       )}
     >
-      <div className='h-auto w-screen px-4 text-center text-6xl font-bold text-white'>
+      <h1 className='h-auto w-screen px-4 text-center text-6xl font-bold text-teal-500'>
         Periodic Table Speller
-      </div>
+      </h1>
       <input
-        className='h-16 w-3/5 rounded-lg p-4 text-2xl shadow-2xl focus:outline-none max-[480px]:w-[320px]'
+        className='h-16 w-3/5 rounded-lg p-4 text-2xl focus:outline-none max-[480px]:w-[320px]'
         value={sentence}
         onChange={handleChange}
         onKeyUp={handleKeyUp}
         disabled={isSending}
         autoFocus={true}
       />
-      <div
-        className={clsx(
-          'flex h-16 w-3/5 items-center overflow-auto whitespace-pre rounded-lg px-4 text-2xl shadow-2xl max-[480px]:w-[320px]',
-          {
-            'bg-green-300': !isSending,
-            'bg-orange-300': isSending,
-          }
-        )}
-      >
+      <div className='flex h-16 w-3/5 items-center overflow-auto whitespace-pre rounded-lg border-4 border-teal-500 px-4 text-2xl max-[480px]:w-[320px]'>
         {response.isBreakable ? (
           getDisplayedResultArray(response.resultArray).map(
             ({ symbol, color, source }, i) => (
@@ -140,7 +132,7 @@ export default function Main() {
                 key={i}
                 href={source ?? ''}
                 target='_blank'
-                className={clsx('font-bold', {
+                className={clsx('px-px font-bold hover:text-3xl', {
                   'text-red-500': color === 'red',
                   'text-blue-500': color === 'blue',
                 })}
@@ -154,7 +146,7 @@ export default function Main() {
         )}
       </div>
       <button
-        className='h-12 w-48 rounded-lg bg-red-500 text-2xl font-bold text-white hover:bg-red-400'
+        className='h-12 w-48 rounded-lg bg-teal-500 text-2xl font-bold text-white'
         onClick={clear}
       >
         Clear
