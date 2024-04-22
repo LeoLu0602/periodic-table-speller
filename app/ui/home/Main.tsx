@@ -105,16 +105,15 @@ export default function Main() {
   }
 
   return (
-    <div
+    <section
       className={clsx(
         'flex h-screen w-screen flex-col items-center justify-center gap-12',
         {
-          'bg-green-500': !isSending,
           'bg-orange-500': isSending,
         }
       )}
     >
-      <div className='h-auto w-11/12 text-center text-6xl font-bold text-white'>
+      <div className='h-auto w-screen px-4 text-center text-6xl font-bold text-white'>
         Periodic Table Speller
       </div>
       <input
@@ -160,6 +159,6 @@ export default function Main() {
       >
         Clear
       </button>
-    </div>
+    </section>
   );
 }
