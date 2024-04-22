@@ -113,7 +113,7 @@ export default function Main() {
         }
       )}
     >
-      <h1 className='h-auto w-screen animate-[] animate-[fadeIn_3s] px-4 text-center text-6xl font-bold text-teal-500'>
+      <h1 className='h-auto w-screen animate-[fadeIn_3s] px-4 text-center text-6xl font-bold text-teal-500'>
         Periodic Table Speller
       </h1>
       <input
