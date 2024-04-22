@@ -15,7 +15,7 @@ export default function Methodology() {
         </a>
         &nbsp;1D dynamic programming is applied to break a sentence into
         chemical elements if possible. wordDict in Word Break is replaced by 118
-        chemical elements and whitespace. Whitespace is included to preserve
+        chemical elements and a whitespace. Whitespace is included to preserve
         sentence&apos;s format.
       </p>
     </section>
