@@ -2,7 +2,7 @@ import TableRow from './TableRow';
 
 export default function PeriodicTable() {
   return (
-    <section className='hidden h-screen w-screen flex-col items-center justify-center overflow-auto min-[925px]:flex'>
+    <section className='hidden h-screen w-screen flex-col items-center justify-center min-[925px]:flex'>
       <TableRow
         elements={[
           { symbol: 'H', number: 1 },

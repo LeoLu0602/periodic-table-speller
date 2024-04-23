@@ -9,6 +9,7 @@ export default function TableRow({ elements }: Props) {
     <div className='relative mb-1 flex h-[50px] w-[917px] gap-1 before:m-1 after:m-1'>
       {elements.map(({ symbol, number }) => (
         <div
+          key={number}
           className={clsx(
             'relative flex h-[50px] w-[50px] cursor-pointer items-center justify-center font-bold text-white',
             {
