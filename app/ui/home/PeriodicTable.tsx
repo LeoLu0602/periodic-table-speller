@@ -2,7 +2,10 @@ import TableRow from './TableRow';
 
 export default function PeriodicTable() {
   return (
-    <section className='hidden h-screen w-screen flex-col items-center justify-center min-[925px]:flex'>
+    <section className='hidden h-auto w-screen flex-col items-center justify-center py-32 min-[925px]:flex'>
+      <h2 className='mb-8 w-screen text-center text-5xl font-bold text-teal-500'>
+        Periodic Table
+      </h2>
       <TableRow
         elements={[
           { symbol: 'H', number: 1 },
