@@ -117,14 +117,14 @@ export default function Main() {
         Periodic Table Speller
       </h1>
       <input
-        className='h-16 w-3/5 rounded-lg p-4 text-2xl focus:outline-none max-[480px]:w-[320px]'
+        className='h-16 w-[340px] rounded-lg p-4 text-2xl focus:outline-none min-[480px]:w-[380px] min-[768px]:w-[668px] min-[1024px]:w-[924px]'
         value={sentence}
         onChange={handleChange}
         onKeyUp={handleKeyUp}
         disabled={isSending}
         autoFocus={true}
       />
-      <div className='flex h-16 w-3/5 items-center overflow-auto whitespace-pre rounded-lg border-4 border-teal-500 px-4 text-2xl max-[480px]:w-[320px]'>
+      <div className='flex h-16 w-[340px] items-center overflow-auto whitespace-pre rounded-lg border-4 border-teal-500 px-4 text-2xl min-[480px]:w-[380px] min-[768px]:w-[668px] min-[1024px]:w-[924px]'>
         {response.isBreakable ? (
           getDisplayedResultArray(response.resultArray).map(
             ({ symbol, color, source }, i) => (
