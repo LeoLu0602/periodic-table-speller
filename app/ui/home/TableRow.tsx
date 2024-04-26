@@ -11,7 +11,7 @@ export default function TableRow({ elements }: Props) {
         <div
           key={i}
           className={clsx(
-            'relative flex h-[20px] w-[20px] cursor-pointer items-center justify-center text-[80%] font-bold text-white min-[480px]:h-[26px] min-[480px]:w-[26px] min-[768px]:h-[42px] min-[768px]:w-[42px] min-[1024px]:h-[56px] min-[1024px]:w-[56px]',
+            'relative flex h-[20px] w-[20px] cursor-pointer items-center justify-center text-[10px] font-bold text-white min-[480px]:h-[26px] min-[480px]:w-[26px] min-[768px]:h-[42px] min-[768px]:w-[42px] min-[768px]:text-[20px] min-[1024px]:h-[56px] min-[1024px]:w-[56px]',
             {
               'bg-teal-500': number > 0,
             }
