@@ -4,7 +4,7 @@ export default function Methodology() {
       <h2 className='w-screen text-center text-5xl font-bold text-teal-500'>
         How It Works
       </h2>
-      <p className='mx-auto max-w-screen-lg p-8 text-left text-xl font-bold text-white'>
+      <p className='p-8 text-left text-xl font-bold text-white'>
         The algorithm behind Periodic Table Speller is inspired by&nbsp;
         <a
           href='https://leetcode.com/problems/word-break/description/'
