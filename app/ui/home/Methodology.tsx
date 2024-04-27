@@ -14,9 +14,8 @@ export default function Methodology() {
           LeetCode 139. Word Break
         </a>
         .&nbsp;1D dynamic programming is applied to break a sentence into
-        chemical elements if possible. wordDict in Word Break is set to an array
-        of 118 chemical elements and a whitespace. Whitespace is included to
-        preserve sentence&apos;s format. See&nbsp;
+        chemical symbols if possible. wordDict in Word Break is set to an array
+        of 118 chemical symbols and a whitespace. See&nbsp;
         <a
           href='https://github.com/LeoLu0602/periodic-table-speller'
           target='_blank'
